@@ -1,0 +1,21 @@
+{
+  "name": "node-red-contrib-ssdp-discovery",
+  "version": "0.0.1",
+  "description": "Node-Red node for detection by Simple Service Discovery Protocol (SSDP)",
+  "main": "10-ssdp-discovery.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/efa2000/node-red-contrib-ssdp-discovery.git"
+  },
+  "keywords": [
+    "node-red", "ssdp", "ssdp-discovery", "upnp"
+  ],
+  "author": "efa2000",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/efa2000/node-red-contrib-ssdp-discovery/issues"
+  }
+}
