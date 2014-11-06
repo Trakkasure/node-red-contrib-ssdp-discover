@@ -1,8 +1,29 @@
 <script type="text/javascript">
+    RED.nodes.registerType('ssdp',{
+        category: 'config',
+        defaults: {
+            address: {value:"0.0.0.0", required:true}
+        },
+        label: function() {
+            return this.address;
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="ssdp">
+    <div class="form-row">
+        <label for="node-config-input-address"><i class="icon-bookmark"></i> IP address</label>
+        <input type="text" id="node-config-input-address">
+    </div>
+</script>
+
+
+<script type="text/javascript">
     RED.nodes.registerType('ssdp-discovery',{
         category: 'input',
         color: 'Silver',
         defaults: {
+            ssdp:{type:"ssdp", required:true},
             name: {value:""},
             st: {value:"ssdp:all", required:true}
         },
@@ -16,6 +37,10 @@
 </script>
 
 <script type="text/x-red" data-template-name="ssdp-discovery">
+    <div class="form-row">
+        <label for="node-input-ssdp"><i class="icon-tag"></i> Interface</label>
+        <input type="text" id="node-input-ssdp">
+    </div>
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
@@ -32,5 +57,4 @@
     <h4>Search Target</h4>
     <p>Example: <i>urn:schemas-upnp-org:service:ContentDirectory:1</i><br>
     Searches for a Host that has a service profile corresponding to serviceName or all services <i>ssdp:all</i></p>
-
 </script>
