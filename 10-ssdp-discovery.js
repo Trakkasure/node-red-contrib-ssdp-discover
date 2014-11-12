@@ -19,8 +19,11 @@ module.exports = function(RED) {
         });
 
         socket.on('message',function(msg, remote){
-        	var str = msg.toString();
-    		var arr = str.match(/[^\r\n]+/g);
+//        	var str = msg.toString();
+    		var arr = msg.toString().match(/[^\r\n]+/g);
+    		if (arr[0]=='M-SEARCH * HTTP/1.1'){
+    			return;
+    		}
     		var newMsq={};
     		newMsq.payload={};
     		for (var i = 0; i < arr.length; ++i){
