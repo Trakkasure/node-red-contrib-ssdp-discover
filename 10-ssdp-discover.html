@@ -1,0 +1,91 @@
+<script type="text/javascript">
+    RED.nodes.registerType('ssdp',{
+        category: 'config',
+        defaults: {
+            address: {value:"0.0.0.0", required:true}
+        },
+        label: function() {
+            return this.address;
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="ssdp">
+    <div class="form-row">
+        <label for="node-config-input-address"><i class="icon-bookmark"></i> IP address</label>
+        <input type="text" id="node-config-input-address">
+    </div>
+</script>
+
+
+
+<script type="text/javascript">
+    RED.nodes.registerType('ssdp-discover',{
+        category: 'input',
+        color: 'Silver',
+        defaults: {
+            ssdp:{type:"ssdp", required:true},
+            name: {value:""},
+            atstart: {value:false},
+            repeat: {value:0},
+            st: {value:"", required:false}
+        },
+        inputs:0,
+        outputs:1,
+        icon: "bridge-dash.png",
+        label: function() {
+            return this.name||this.st||"ssdp:all";
+        }
+    });
+</script>
+
+
+<style>
+    .inject-time-count {
+        width: 60px !important;
+    }
+    .inject-group {
+        display: inline-block;
+        width: 200px !important;
+        font-size: 16px;
+    }
+</style>
+
+
+<script type="text/x-red" data-template-name="ssdp-discover">
+    <div class="form-row">
+        <label for="node-input-ssdp"><i class="icon-tag"></i> Interface</label>
+        <input type="text" id="node-input-ssdp">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-st"> Search Target</label>
+        <input type="text" id="node-input-st" placeholder="urn:schemas-udap:service:serviceName:version">
+    </div>
+    <div class="form-row">
+        <label for="" class="inject-group"><i class="fa fa-bullhorn"></i>  Active discover:</label>
+    </div>
+    <div class="form-row">
+        <label for="node-input-repeat">&nbsp;</label>
+        <i class="fa fa-repeat"></i> Repeat every <input id="node-input-repeat" class="inject-time-count" ></input> seconds.
+    </div>
+    <div class="form-row">
+        <label>&nbsp;</label>
+        <i class="fa fa-exclamation"></i>&nbsp;&nbsp;<input type="checkbox" id="node-input-atstart" style="display: inline-block; width: auto; vertical-align: top;">
+        <label for="node-input-atstart" style="width: 70%;">Once at start ?</label>
+    </div>
+    <div class="form-row">
+        <label>&nbsp;</label>
+    </div>
+    <div class="form-tips">Tip: Leave Search Target blank if you want search all services.</div>
+</script>
+
+<script type="text/x-red" data-help-name="ssdp-discover">
+    <p>Node-Red node for active discover by Simple Service Discovery Protocol (SSDP)</p>
+    <h4>Search Target</h4>
+    <p>Searches for a Host that has a service profile corresponding to serviceName or all services <i>ssdp:all</i></br>
+    Example: <i>urn:schemas-upnp-org:service:ContentDirectory:1</i></p>
+</script>
