@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/efa2000/node-red-contrib-ssdp-discovery.git"
+    "url": "https://github.com/efa2000/node-red-contrib-ssdp-discover.git"
   },
   "keywords": [
     "node-red", "ssdp", "ssdp-discover", "upnp"
@@ -16,6 +16,6 @@
   "author": "efa2000",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/efa2000/node-red-contrib-ssdp-discovery/issues"
+    "url": "https://github.com/efa2000/node-red-contrib-ssdp-discover/issues"
   }
 }
